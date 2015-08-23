@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<style>
+.ui-widget,.ui-widget .ui-widget {
+	font-size: 12px !important;
+}
+
+html,body {
+	margin: 0;
+	padding: 0;
+}
+
+#login {
+	height: 400px;
+	width: 400px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -150px;
+	margin-left: -150px;
+}
+</style>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Customer Self Service</title>
+</h:head>
+
+<h:body>
+
+	<div id="login">
+		<h:form>
+			<p:panel header="Login">
+
+				<h:panelGrid columns="3">
+					<h:outputLabel for="customerId" value="Login ID" />
+
+					<p:inputText id="customerId" value="#{customerBean.customerId}"></p:inputText>
+					<p:watermark for="customerId" value="Enter User Id" />
+					<p:spacer width="2" height="2"></p:spacer>
+					<p:spacer width="2" height="2"></p:spacer>
+					<p:spacer width="2" height="2"></p:spacer>
+					<h:outputLabel for="passsword" value="Passowrd" />
+
+					<p:password type="" id="passsword" inline="false" feedback="false"
+						level="0"></p:password>
+					<p:watermark for="passsword" value="Enter Password" />
+
+
+					<p:spacer width="150" height="10" />
+
+
+				</h:panelGrid>
+
+				<f:facet name="footer">
+					<p:spacer width="250" height="10" />
+					<p:commandButton style="width:100px" value="Login"
+						icon="ui-icon ui-icon-home" ajax="none"
+						actionListener="#{customerBean.loadCustomer}"
+						action="#{customerBean.loadCustomer}"></p:commandButton>
+				</f:facet>
+			</p:panel>
+		</h:form>
+	</div>
+</h:body>
+
+
+</html>

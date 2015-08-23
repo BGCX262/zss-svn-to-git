@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<style>
+.ui-widget,.ui-widget .ui-widget {
+	font-size: 10px !important;
+}
+</style>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Customer Self Service</title>
+</h:head>
+
+<h:body>
+
+	<h:form>
+		 	<p:accordionPanel activeIndex="#{leftMenuBean.activeTab}"
+				id="menuPanel" style="border:none;">
+				<p:tab id="tab_menu1" title="Self Service Center"
+					titleStyle="font-weight:bold;">
+
+					<p:menu style="width:180px;border: none;">
+						<p:menuitem value="Manage My Online Profile"
+							action="#{leftMenuBean.manageOnlineProfile}" ajax="false"
+							style="font-weight:bold;">
+
+						</p:menuitem>
+						<p:menuitem value="Manage My Policy Nickname"
+							action="#{leftMenuBean.managePolicyNickname}" ajax="false" />
+						<p:menuitem value="Manage My eDelivery Options" url="#"
+							ajax="false" />
+					</p:menu>
+
+				</p:tab>
+				<p:tab id="policyTab" titletip="Policy Information"
+					title="Policy Information" titleStyle="font-weight:bold;">
+					<p:menu style="width:170px;border: none;">
+						<p:menuitem value="My Policy Summary" rendered="true"
+							update="mainContent" ajax="false"
+							action="#{leftMenuBean.showPolicySummary}" />
+
+
+					</p:menu>
+				</p:tab>
+
+				<p:tab title="Billing and Claims" titleStyle="font-weight:bold;">
+
+					<p:menu style="width:170px;border: none;">
+						<p:submenu label="Mail">
+							<p:menuitem value="Gmail" url="http://www.google.com" />
+							<p:menuitem value="Hotmail" url="http://www.hotmail.com" />
+							<p:menuitem value="Yahoo Mail" url="http://mail.yahoo.com" />
+						</p:submenu>
+
+					</p:menu>
+
+				</p:tab>
+
+			</p:accordionPanel>
+		 <!--  
+				<p:feedReader
+					value="https://api.twitter.com/1/statuses/user_timeline.rss?screen_name=FarmersGroup"
+					var="feed">
+					<h:outputText value="#{feed.title}" style="font-weight: bold" />
+					<br />
+
+					<p:separator />
+				</p:feedReader>
+				-->
+
+
+	 
+	</h:form>
+</h:body>
+</html>

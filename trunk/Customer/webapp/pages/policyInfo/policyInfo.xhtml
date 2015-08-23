@@ -1,0 +1,88 @@
+
+<ui:composition template="../../templates/fullpage.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="content">
+		<h:form id="policytableForm">
+
+			<p:contextMenu for="policyTable">
+				<p:menuitem value="More Information" update="policytableForm"
+					icon="ui-icon-search" oncomplete="policyDialog.show()" />
+
+			</p:contextMenu>
+
+			<p:dialog
+				header="Policy Details for #{policyInfoBean.selectedPolicy.policyContractNumber}"
+				widgetVar="policyDialog" id="policyDialog" resizable="false"
+				width="400" showEffect="clip" hideEffect="clip">
+				<h:panelGrid id="display" columns="2" cellpadding="4">
+					<h:outputLabel value="Policy Number" for="modelPlcyNum"  />
+					<h:outputText
+						value="#{policyInfoBean.selectedPolicy.policyContractNumber}" id="modelPlcyNum"
+						style="font-weight:bold" />
+
+					<h:outputText value="Description" />
+					<h:outputText value="#{policyInfoBean.selectedPolicy.type}"
+						style="font-weight:bold" />
+				</h:panelGrid>
+				<h:panelGrid columns="2">
+				 <p:spacer width="250"></p:spacer>
+				 <p:commandButton value="OK" update=":display"  style="width:100px" oncomplete="policyDialog.hide();"/>  
+				 </h:panelGrid>
+			</p:dialog>
+
+			<p:dataTable var="policyInfo" value="#{policyInfoBean.policyInfos}"
+				widgetVar="policyTable" emptyMessage="NO Policy Found "
+				id="policyTable"  
+				  rowKey="#{policyInfo.policyContractNumber}">
+				<f:facet name="header">  
+           					My Policy Summary    
+       					 </f:facet>
+				<p:column headerText="Policy Number">
+				<strong>
+					<p:commandLink  value="#{policyInfo.policyContractNumber}"  action="#{policyInfoBean.viewOrPayBill}"  ajax="false" >
+					<f:setPropertyActionListener value="#{policyInfo}"
+							target="#{policyInfoBean.selectedPolicy}" /></p:commandLink></strong>
+				</p:column>
+				<p:column headerText="Description">
+					<h:outputText value="#{policyInfo.policyContractNumber}" />
+				</p:column>
+				<p:column headerText="Type">
+					<h:outputText value="#{policyInfo.type}" />
+				</p:column>
+				<p:column headerText="Status">
+					<h:outputText value="#{policyInfo.policyContractNumber}" />
+				</p:column>
+				<p:column headerText="Due Date">
+					<h:outputText value="#{policyInfo.policyContractNumber}" />
+				</p:column>
+				<p:column headerText="Payment Due">
+					<h:outputText value="#{policyInfo.policyContractNumber}" />
+				</p:column>
+				<p:column>
+					<p:commandButton  update="policytableForm"
+						icon="ui-icon-search" oncomplete="policyDialog.show()">
+						<f:setPropertyActionListener value="#{policyInfo}"
+							target="#{policyInfoBean.selectedPolicy}" />
+					</p:commandButton>
+					<p:commandButton value="View/Pay Bill" update="policytableForm"
+						icon="ui-icon-extlink"  action="#{policyInfoBean.viewOrPayBill}"  ajax="false" >
+					<f:setPropertyActionListener value="#{policyInfo}"
+							target="#{policyInfoBean.selectedPolicy}" />
+						
+						</p:commandButton>
+				</p:column>
+
+			</p:dataTable>
+
+
+
+
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>

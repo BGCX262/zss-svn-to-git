@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="templates/fullpage.xhtml">
+
+	<ui:define name="content">
+		<h:form>
+			<h:panelGrid width="100%" columns="1" style="border: none;">
+
+				<h:panelGrid columns="2" width="100%">
+
+					<p:panel id="personal" header="#{msg['index.Personal.Account.Information']}"
+						style="height:150px">
+						<h:panelGrid columns="2" style="font-weight: bold;">
+							<h:outputLabel value="#{msg['index.Personal.Contact.Number']} :"
+								for="personalNumber" />
+							<h:outputText value="#{customerBean.custContact.personalPhone}"
+								id="personalNumber" />
+							<h:outputLabel value="#{msg['index.Business.Contact.Number']} :"
+								for="businessNumber" />
+							<h:outputText value="#{customerBean.custContact.businessPhone}"
+								id="businessNumber" />
+							<h:outputLabel value="#{msg['index.Email']} :" for="email" />
+							<h:outputText value="#{customerBean.custContact.emailAddress}"
+								id="email" />
+
+
+						</h:panelGrid>
+						<div align="right">
+							<p:spacer height="30"></p:spacer>
+							<p:commandButton value="#{msg['index.View.Personal.Account.Information']}"
+								ajax="false" action="/pages/selfService/selfService" />
+						</div>
+
+					</p:panel>
+
+					<p:panel id="billingandClaims" style="height:150px"
+						header="#{msg['index.Billing.Claims.Inormation']}">
+						<h:outputText value="Billing Reminders" />
+					</p:panel>
+				</h:panelGrid>
+				<h:panelGrid columns="1" width="100%">
+
+					<p:panel id="policy" style="height:150px" header="#{msg['index.Policy.Summary']}">
+						<p:dataTable var="policyInfo"
+							value="#{policyInfoBean.policyInfos}" widgetVar="policyTable"
+							emptyMessage="#{msg['index.NO.Policy.Found']}">
+							<p:column headerText="#{msg['index.Policy.Number']}">
+								<h:outputText value="#{policyInfo.policyContractNumber}" />
+							</p:column>
+
+							<p:column headerText="#{msg['index.Expiry.Date']}">
+								<h:outputText value="#{policyInfo.expiryDate}" />
+							</p:column>
+
+							<p:column headerText="#{msg['index.Policy.Type']}">
+								<h:outputText value="#{policyInfo.type}" />
+							</p:column>
+
+
+						</p:dataTable>
+
+						<div align="right">
+							<p:spacer height="30"></p:spacer>
+							<p:commandButton value="#{msg['index.Personal.Account.Information']}" ajax="false"
+								action="/pages/policyInfo/policyInfo" />
+						</div>
+					</p:panel>
+
+
+				</h:panelGrid>
+			</h:panelGrid>
+
+
+
+
+		</h:form>
+
+
+
+	</ui:define>
+
+</ui:composition>
+</html>

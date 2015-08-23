@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<style>
+.ui-widget,.ui-widget .ui-widget {
+	font-size: 10px !important;
+}
+</style>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Customer Self Service</title>
+</h:head>
+
+<h:body>
+	<h:outputStylesheet library="css" name="layout.css" target="head" />
+	<p:notificationBar position="top" effectSpeed="1000" effect="slide"
+		widgetVar="bar" style="width: 100%; height: 15%; z-index: 108"
+		styleClass="notificationBar">
+		<h:form>
+			<table>
+
+				<tr align="right">
+					<td width="25%"></td>
+
+					<td><p:commandLink value="Englich"
+							style="font-size: large;color:blue;font-weight: bold;"
+							action="#{customerBean.changelanguage}" onclick="bar.hide()"
+							ajax="false">
+							<f:setPropertyActionListener value="en"
+								target="#{customerBean.customerLanguage}" />
+						</p:commandLink></td>
+					<td width="25%"></td>
+
+					<td><p:commandLink value="Espanol"
+							style="font-size: large;color:blue;font-weight: bold;"
+							action="#{customerBean.changelanguage}" onclick="bar.hide()"
+							ajax="false">
+							<f:setPropertyActionListener value="pl"
+								target="#{customerBean.customerLanguage}" />
+						</p:commandLink></td>
+					<td width="30%"></td>
+
+					<td><p:commandLink value="French"
+							style="font-size: large;color:blue;font-weight: bold;"
+							action="#{customerBean.changelanguage}" onclick="bar.hide()"
+							ajax="false">
+							<f:setPropertyActionListener value="fr"
+								target="#{customerBean.customerLanguage}" />
+						</p:commandLink></td>
+					<td width="30%"><p:themeSwitcher></p:themeSwitcher></td>
+
+				</tr>
+
+			</table>
+
+		</h:form>
+
+	</p:notificationBar>
+
+	<div id="container" style="height: 100%">
+
+
+		<p:layout
+			style="min-width:400px;min-height:680px;max-height:680px;max-width:1450px;"
+			id="layout">
+
+			<p:layoutUnit position="north" resizable="false" closable="false"
+				styleClass="topPanel" style="border:none;">
+				<h:form>
+					<div align="left">
+						<h:graphicImage width="100" height="60"
+							value="#{resource['images:logo.jpg']}" onclick="/index.jsf" />
+
+						 <h:outputText value="#{msg['top.name']}" /> 
+						 
+
+					</div>
+ 
+
+					<div align="right"
+						style="background-color: #3B65CB; font-weight: bold;width:100%;height:15px">
+						<p:commandLink value="#{msg['language.changeLink']}"
+							onclick="bar.show()" />
+
+						<h:outputText value=" Welcome " />
+
+						<h:outputText
+							value=" #{customerBean.customer.lastName} &nbps;
+													&nbps; #{customerBean.customer.firstName}"></h:outputText>
+
+						(
+						<p:commandLink ajax="none" value="Sign out"
+							action="#{customerBean.signOut}"></p:commandLink>
+						)
+
+						<h:outputText value=" Last Sign-on:#{customerBean.lastLoginTime}" />
+
+					</div>
+
+				</h:form>
+			</p:layoutUnit>
+			<p:layoutUnit position="east" resizable="false" size="100"
+				minSize="244" maxSize="300" closable="true" collapsible="true"
+				collapseSize="10">
+				<ui:include src="/templates/rightMenu.xhtml" />
+			</p:layoutUnit>
+
+			<p:layoutUnit position="west" resizable="true" size="100"
+				minSize="244" maxSize="300">
+				<ui:include src="/templates/leftMenu.xhtml" />
+			</p:layoutUnit>
+
+			<p:layoutUnit position="center" style="height:70%">
+				<ui:insert name="content">
+
+				</ui:insert>
+
+			</p:layoutUnit>
+			<p:layoutUnit position="south" size="50" resizable="false"
+				closable="false" collapsible="false" style="border: none;">
+
+
+
+				<h:form>
+
+
+					<div align="left">
+
+						<p:commandLink
+							value="©2011 Farmers Insurance - All Rights Reserved" />
+					</div>
+					<div align="right">
+						<p:commandLink value="Contact Us"></p:commandLink>
+					</div>
+
+
+
+
+				</h:form>
+
+			</p:layoutUnit>
+
+		</p:layout>
+	</div>
+</h:body>
+</html>

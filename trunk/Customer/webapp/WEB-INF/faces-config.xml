@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- =========== FULL CONFIGURATION FILE ================================== -->
+<faces-config version="2.0" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+	<navigation-rule>
+		<from-view-id>/index.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>selfService</from-outcome>
+			<to-view-id>/pages/selfService/selfService.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<application>
+		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+		<locale-config>
+			<default-locale>en</default-locale>
+			<supported-locale>en</supported-locale>
+			<supported-locale>pl</supported-locale>
+		</locale-config>
+		<message-bundle>com.farmers.css.i18n.resources</message-bundle>
+		<resource-bundle>
+			<base-name>com.farmers.css.i18n.messages</base-name>
+			<var>msg</var>
+		</resource-bundle>
+	</application>
+</faces-config>

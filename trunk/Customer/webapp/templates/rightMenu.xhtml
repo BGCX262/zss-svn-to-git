@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<style>
+.ui-widget,.ui-widget .ui-widget {
+	font-size: 10px !important;
+}
+</style>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Customer Self Service</title>
+</h:head>
+
+<h:body>
+
+	<h:form>
+		 	 
+		 <!--  
+				<p:feedReader
+					value="https://api.twitter.com/1/statuses/user_timeline.rss?screen_name=FarmersGroup"
+					var="feed">
+					<h:outputText value="#{feed.title}" style="font-weight: bold" />
+					<br />
+
+					<p:separator />
+				</p:feedReader>
+				-->
+
+
+		<p:carousel rows="1" headerText="Latst News" circular="true"
+			style="border: none;" autoPlayInterval="2000" effect="easeInStrong">
+			<p:graphicImage width="232" height="180"
+				value="/resources/ad/cr2.jpg" id="image1" onclick="alert('sample');" >
+				<p:tooltip for="image1" value="This is sample"> </p:tooltip>
+		 		</p:graphicImage>
+					<p:graphicImage width="232" height="180"
+				value="/resources/ad/cr4.jpg" />
+			<p:graphicImage width="232" height="180"
+				value="/resources/ad/cr3.jpg" />
+
+		</p:carousel>
+	</h:form>
+</h:body>
+</html>

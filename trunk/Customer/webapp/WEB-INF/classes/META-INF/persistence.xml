@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="cssPersistentUnit">
+		<class>com.farmers.css.entity.Agent</class>
+		<class>com.farmers.css.entity.AgentAddress</class>
+		<class>com.farmers.css.entity.AgentContact</class>
+		<class>com.farmers.css.entity.Billing</class>
+		<class>com.farmers.css.entity.Coverage</class>
+		<class>com.farmers.css.entity.CustAddress</class>
+		<class>com.farmers.css.entity.CustContact</class>
+		<class>com.farmers.css.entity.Customer</class>
+		<class>com.farmers.css.entity.Document</class>
+		<class>com.farmers.css.entity.Payment</class>
+		<class>com.farmers.css.entity.PolicyInfo</class>
+		<class>com.farmers.css.entity.Premium</class>
+		<class>com.farmers.css.entity.Property</class>
+		<class>com.farmers.css.entity.PropertyAddress</class>
+		<class>com.farmers.css.entity.Vehicle</class>
+
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+			<property name="hibernate.show_sql" value="true" />
+			 
+		</properties>
+
+	</persistence-unit>
+</persistence>

@@ -1,0 +1,62 @@
+
+<ui:composition template="../../templates/fullpage.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="content">
+		<h:form id="policyNicknameForm">
+			<p:growl id="messages" showDetail="true" />
+
+
+			<p:contextMenu for="policyTable">
+				<p:menuitem value="More Information" update="policyNicknameForm"
+					icon="ui-icon-search" oncomplete="policyDialog.show()" />
+			</p:contextMenu>
+			<p:dataTable var="policyInfo" value="#{policyInfoBean.policyInfos}"
+				widgetVar="policyTable" emptyMessage="NO Policy Found "
+				id="policyTable" rowKey="#{policyInfo.policyContractNumber}">
+				<f:facet name="header">  
+           					Manage Policy Nickname  
+       					 </f:facet>
+				<p:column headerText="Policy Number">
+					<strong> <p:commandLink
+							value="#{policyInfo.policyContractNumber}"
+							action="#{policyInfoBean.viewOrPayBill}" ajax="false">
+							<f:setPropertyActionListener value="#{policyInfo}"
+								target="#{policyInfoBean.selectedPolicy}" />
+						</p:commandLink></strong>
+				</p:column>
+				<p:column headerText="Type">
+					<h:outputText value="#{policyInfo.type}" />
+				</p:column>
+
+				<p:column headerText="Nickname">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{policyInfo.type}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{policyInfo.type}" style="width:100%" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+				<p:column>
+					<p:rowEditor>
+
+					</p:rowEditor>
+
+				</p:column>
+
+			</p:dataTable>
+
+
+
+
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>

@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="../../templates/cssTemplate.xhtml">
+
+	<ui:define name="content">
+		<h:form>
+ 
+			<p:dashboard widgetVar="board" id="board" style=""
+				model="#{dashboardBean.model}">
+				<p:panel style="width:450px;height:200px" id="personal"
+					header="Personal Information">
+					<h:outputText value="Personal Information Goes here " />
+				</p:panel>
+
+				<p:panel style="width:450px;height:200px" id="billing"
+					header="Billing Inormation">
+					<h:outputText value="Billing Reminders" />
+				</p:panel>
+
+				<p:panel style="width:450px;height:200px" id="policy"
+					header="Personal Information">
+					<h:outputText value="Policy Information " />
+				</p:panel>
+
+				<p:panel style="width:450px;height:200px" id="alerts"
+					header="Alerts Information">
+					<h:outputText value="Alerts Information" />
+				</p:panel>
+
+
+			</p:dashboard>
+
+
+
+
+		</h:form>
+
+
+
+	</ui:define>
+
+</ui:composition>
+</html>

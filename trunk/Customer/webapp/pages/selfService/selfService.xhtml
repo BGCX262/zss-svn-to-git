@@ -1,0 +1,147 @@
+
+<ui:composition template="../../templates/fullpage.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="content">
+		<p:notificationBar position="top" effect="slide" widgetVar="bar"
+			styleClass="notificationBar" >
+			<h:outputText
+				value="Your Information has been updated!!!"
+				style="color:#FFCC00;font-size:36px;" />
+		</p:notificationBar>
+
+		<h:form>
+
+
+			<p:tabView activeIndex="0" style="border: none;"
+				id="selfServiceTabView">
+				<p:tab title="Update Personal Information" style="border: none;"
+					id="personalInfoTab">
+					<p:panel style="border: none;" id="personalInfoPanel">
+
+						<h:panelGrid columns="1" width="100%">
+							<p:fieldset legend="Phone Number " style="width:100%;padding:0px"
+								toggleable="true" toggleSpeed="500" collapsed="false">
+								<h:panelGrid columns="8" style="text-align: center;">
+									<h:outputLabel value="Personal Contact Number "
+										for="personalPhoneNumber" />
+									<p:inputMask  required="true" value="#{customerBean.custContact.personalPhone}"
+										size="30" id="personalPhoneNumber" mask="(999)999-9999"
+										style="color:#000000;font-size:40px;">
+
+									</p:inputMask>
+									<p:watermark value="Please Enter Phone Number"
+										for="personalPhoneNumber"></p:watermark>
+									<p:spacer width="40"></p:spacer>
+
+									<h:outputLabel value="Business Contact Number "
+										for="businessPhoneNumber" />
+									<p:inputMask size="30" id="businessPhoneNumber"
+										value="#{customerBean.custContact.businessPhone}"
+										mask="(999)999-9999" style="color:#000000;font-size:40px;">
+
+									</p:inputMask>
+									<p:watermark value="Please Enter Business Number"
+										for="businessPhoneNumber"></p:watermark>
+
+									<p:spacer height="40"></p:spacer>
+
+								</h:panelGrid>
+
+							</p:fieldset>
+
+
+							<p:fieldset legend="Email Address " style="padding:0px"
+								toggleable="true" toggleSpeed="500" collapsed="false">
+								<h:panelGrid columns="8" style="text-align: center;">
+									<h:outputLabel value="Email Address" for="emailId" />
+									<p:spacer width="40" height="0"></p:spacer>
+									<p:inputText id="emailId"
+										value="#{customerBean.custContact.emailAddress}">
+										<f:validateRegex
+											pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+
+									</p:inputText>
+									<p:spacer height="40"></p:spacer>
+
+									<h:outputLabel value="Confirm Email Address" for="confEmailId" />
+									<p:spacer width="40" height="0"></p:spacer>
+									<p:inputText id="confEmailId">
+										<f:validateRegex
+											pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+
+									</p:inputText>
+								</h:panelGrid>
+							</p:fieldset>
+
+
+						</h:panelGrid>
+						<h:panelGrid columns="1" style="float:right;">
+							<p:commandButton onclick="bar.show()"
+								style="width:200px;height:50px;" ajax="true"
+								value="Update Personal Information"
+								action="#{customerBean.updateCustomerContact}"></p:commandButton>
+						</h:panelGrid>
+					</p:panel>
+				</p:tab>
+
+				<p:tab title="Update Account Information" id="accountInfoTab">
+					<p:panel style="border: none;" id="accountInfoPanel">
+						<h:panelGrid columns="1" width="100%">
+							<p:fieldset legend="Update Password " toggleable="true"
+								toggleSpeed="500" collapsed="false">
+
+								<h:panelGrid columns="3" style="text-align: center;">
+									<h:outputLabel value="Old Password " for="oldPassword" />
+									<p:password feedback="false" size="35" id="oldPassword">
+									</p:password>
+									<p:watermark value="Please enter Old Password"
+										for="oldPassword"></p:watermark>
+									<p:spacer height="10"></p:spacer>
+									<p:spacer></p:spacer>
+									<p:spacer></p:spacer>
+									<h:outputLabel value="New Password " for="newPassword" />
+									<p:password size="35" id="newPassword" inline="true" match="confirmPassword"></p:password>
+									<p:watermark value="Please Enter New Password"
+										for="newPassword"></p:watermark>
+									<p:spacer height="10"></p:spacer>
+									<p:spacer></p:spacer>
+									<p:spacer></p:spacer>
+									<h:outputLabel value="Confirm Password " for="confirmPassword" />
+									<p:password size="35" id="confirmPassword" feedback="false"></p:password>
+									<p:watermark value="Please Confirm Password"
+										for="confirmPassword"></p:watermark>
+
+								</h:panelGrid>
+
+							</p:fieldset>
+							<p:fieldset legend="Security Question" toggleable="true"
+								toggleSpeed="500" collapsed="false">
+								<p:spacer height="40"></p:spacer>
+
+							</p:fieldset>
+						</h:panelGrid>
+						<h:panelGrid columns="1" style="float:right;">
+							<p:commandButton onclick="bar.show()"
+								style="width:200px;height:50px;"
+								value="Update Personal Information"></p:commandButton>
+						</h:panelGrid>
+					</p:panel>
+
+
+				</p:tab>
+
+
+
+
+			</p:tabView>
+
+
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>

@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<style>
+.ui-widget,.ui-widget .ui-widget {
+	font-size: 10px !important;
+}
+</style>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Customer Self Service</title>
+</h:head>
+
+<h:body>
+	<h:form>
+
+		<p:panel>
+			<h:outputLabel value="This is label" />
+			<p:separator style="width:100%;height:10px" />
+
+			<h:commandButton value="Button One" />
+			<h:commandButton value="Button One" />
+			<h:commandButton value="Button One" />
+			<h:commandButton value="Button One" />
+		</p:panel>
+
+
+		<p:inputText value="#{customerBean.customerId}"></p:inputText>
+		<p:commandLink value="Locate Cutomer" ajax="none"
+			actionListener="#{customerBean.loadCustomer}"
+			action="#{customerBean.loadCustomer}"></p:commandLink>
+		<h:commandButton value="Load Customer"
+			action="#{customerBean.loadCustomer}" />
+
+
+	</h:form>
+</h:body>
+</html>
